@@ -144,6 +144,7 @@ const axios = require('axios');
       // Set the viewport to avoid elements changing places 
       {
           const targetPage = page;
+          await targetPage.setExtraHTTPHeaders({'Accept': 'application/json, text/javascript, */*; q=0.01', 'X-Requested-With': 'XMLHttpRequest'});
           await targetPage.setViewport({"width":2078,"height":1479})
       }
 
@@ -227,6 +228,7 @@ const axios = require('axios');
       // We are logged in now. Check available dates from the API
       {
           const targetPage = page;
+          await targetPage.setExtraHTTPHeaders({'Accept': 'application/json, text/javascript, */*; q=0.01', 'X-Requested-With': 'XMLHttpRequest'});
           const response = await targetPage.goto('https://ais.usvisa-info.com/en-' + region + '/niv/schedule/' + appointmentId + '/appointment/days/' + consularId + '.json?appointments[expedite]=false');
 
           const availableDates = JSON.parse(await response.text());
